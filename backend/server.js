@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+dotenv.config();
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { askPortfolio } from "./rag/query.js";
 import contactRoutes from "./routes/contact.js";
@@ -12,7 +13,7 @@ mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("MongoDB connected"))
     .catch(err => console.log(err));
 
-dotenv.config();
+
 
 const app = express();
 app.use(cors());
@@ -122,4 +123,5 @@ Now reply like a sharp AI agent representing Samir:
     }
 });
 
-app.listen(5000, () => console.log("🚀 AI server running on 5000"));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`🚀 AI server running on ${PORT}`));
