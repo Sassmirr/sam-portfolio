@@ -1,0 +1,153 @@
+SAMIR GAJJAR – PORTFOLIO KNOWLEDGE BASE
+
+BASIC INFORMATION:
+Name: Samir Sunilkumar Gajjar
+Location: Ahmedabad, Gujarat, India
+Email: [sgajjar3216@gmail.com](mailto:sgajjar3216@gmail.com)
+Phone: +91 8200949984
+LinkedIn: https://www.linkedin.com/in/samir-gajjar-bb8625290
+GitHub: https://github.com/Sassmirr
+
+PROFESSIONAL SUMMARY:
+Samir Gajjar is a B.Tech Information Technology student graduating in 2026 with hands-on industry experience in MERN stack and AI-driven systems. He has built production-level AI applications including an agentic RAG chatbot using React.js, Node.js, LangChain, Qdrant vector database, and Google Gemini APIs.
+
+He has strong expertise in full-stack development, semantic search systems, applied machine learning, and computer vision. His focus is on building scalable, real-world AI-powered solutions that solve practical problems and demonstrate strong system design skills.
+
+EDUCATION:
+Degree: Bachelor of Technology in Information Technology
+College: Government Engineering College, Modasa
+Graduation Year: 2026
+Current CGPA: 7.36
+
+Higher Secondary Education (HSC):
+School: Swaminarayan Dham International School, Gandhinagar
+Board: GSEB (English Medium)
+Score: 69%
+
+Secondary School (SSC):
+School: Swaminarayan Dham International School, Gandhinagar
+Board: ICSE
+Score: 86%
+
+TECHNICAL SKILLS:
+
+Programming Languages:
+Python, Java, C, C++
+
+Web Development:
+HTML, CSS, JavaScript, React.js, Node.js, Express.js
+
+Databases:
+MongoDB
+Vector Databases: Qdrant
+
+Tools and Platforms:
+Git
+VS Code
+Firebase
+Google Gemini API
+Qdrant Cloud
+Blender
+OpenCV
+
+Concepts and Domains:
+Object-Oriented Programming (OOP)
+REST API Development
+Full-Stack Development
+Artificial Intelligence
+Machine Learning
+Semantic Search
+Vector Databases and Embeddings
+Computer Vision
+Data Management
+Robotics
+
+INTERNSHIP EXPERIENCE:
+Role: MERN Stack and AI Intern
+Company: Softcolon Technologies Pvt. Ltd.
+Duration: 1 July 2025 – 15 July 2025
+
+Responsibilities and Achievements:
+
+* Developed an agentic RAG chatbot with document-based and general chat modes.
+* Built frontend using React.js and backend using Node.js and Express.js.
+* Implemented document ingestion pipelines for PDF, DOC, and PPT files.
+* Integrated Qdrant vector database for semantic search and similarity retrieval.
+* Used LangChain JS for agentic workflows and retrieval pipelines.
+* Integrated Google Gemini Flash model for LLM responses.
+* Designed scalable architecture for document-based AI assistant.
+
+PROJECTS:
+
+PROJECT: Agentic RAG Chatbot
+Description:
+Built a production-ready retrieval augmented generation chatbot capable of answering questions from uploaded documents. Implemented semantic search using vector embeddings and Qdrant. Designed session-based memory and document-specific querying.
+
+Tech Used:
+React.js
+Node.js
+Express.js
+LangChain JS
+Google Gemini API
+Qdrant Vector Database
+MongoDB
+
+PROJECT: AI Fitness Trainer
+Description:
+Developing an AI-powered virtual fitness trainer for exercise tracking and guidance. System aims to track posture and performance using AI models.
+
+Tech Used:
+React.js
+Node.js
+MongoDB
+Computer Vision and AI models
+
+PROJECT: Digital Image Steganography using LSB Masking
+Description:
+Implemented secure message embedding and extraction using least significant bit masking in RGB images. Built full encode–decode pipeline and analyzed imperceptibility vs payload trade-offs.
+
+Tech Used:
+Python
+Image Processing
+Steganography Algorithms
+
+PROJECT: ANPR with Face Recognition
+Description:
+Built system combining automatic number plate recognition with real-time face recognition using computer vision techniques.
+
+Tech Used:
+Python
+OpenCV
+Machine Learning
+
+PROJECT: Movie Classification and Recommendation System
+Description:
+Machine learning-based movie recommendation engine using user preferences and genre analysis.
+
+Tech Used:
+Python
+Machine Learning
+
+PROJECT: Solar System Exploration Website
+Description:
+Interactive educational website with quiz and 3D visualization for learning about the solar system.
+
+Tech Used:
+HTML
+CSS
+JavaScript
+3D Visualization
+
+EXTRACURRICULAR ACTIVITIES:
+Voice Over Artist – Participated in college productions and events
+Robotics – Built quadruped spider robot using microcontroller
+Filmmaking – Directed short film on local heritage
+
+INTERESTS:
+Gym and fitness
+Music and movies
+Travel
+Filmmaking and creative tech
+
+CAREER OBJECTIVE:
+Samir aims to build advanced AI-powered full-stack systems combining MERN and AI technologies. He is particularly interested in agentic AI, retrieval augmented generation systems, and real-world scalable AI applications that demonstrate strong engineering and problem-solving capabilities.

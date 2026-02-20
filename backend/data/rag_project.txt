@@ -1,0 +1,87 @@
+PROJECT KNOWLEDGE DOCUMENT
+PROJECT NAME: Agentic RAG Chatbot (Context-Aware AI Assistant)
+
+PROJECT OVERVIEW:
+The Agentic RAG Chatbot is a full-stack AI application that provides context-aware responses using Retrieval Augmented Generation. The system answers user questions based strictly on uploaded documents such as PDF and TXT files. It uses vector embeddings and semantic search to retrieve relevant document chunks and generates responses using a large language model.
+
+This project demonstrates advanced skills in full-stack development, AI integration, vector databases, and scalable system architecture using the MERN stack combined with modern generative AI tools.
+
+PROJECT OBJECTIVE:
+The goal of this project was to build a production-ready AI chatbot capable of understanding and answering questions from user-uploaded documents while maintaining per-user privacy and session-based context. The chatbot is designed to function strictly as a document-based assistant rather than a general chatbot, ensuring accurate and context-restricted answers.
+
+CORE FEATURES:
+
+User Authentication:
+Implemented secure login and signup using Firebase Authentication with Google and email/password support. Each user has isolated chat sessions and document storage.
+
+Document Upload and Processing:
+Users can upload PDF and TXT files. Uploaded files are parsed and converted into clean text. The text is split into smaller chunks for embedding and semantic retrieval.
+
+Text Chunking and Embedding:
+Documents are divided into meaningful chunks and converted into vector embeddings using Google Gemini embedding models through LangChain. These embeddings represent semantic meaning rather than keywords.
+
+Vector Database Integration:
+All document embeddings are stored in Qdrant vector database. The system performs similarity search to find the most relevant document chunks for each user query.
+
+Context-Restricted Chatbot:
+The chatbot answers strictly from uploaded documents using retrieval augmented generation. If relevant context is not found, the system avoids hallucinated responses and maintains document-based accuracy.
+
+Session-Based Memory:
+Each chat session is stored in MongoDB, allowing users to revisit past conversations. Document context is filtered by both user and session to maintain privacy and relevance.
+
+Real-Time Chat Interface:
+A modern chat interface built using React and Tailwind CSS enables real-time interaction with document-aware AI responses.
+
+Per-User and Per-Session Isolation:
+Each user's documents and embeddings are separated using metadata filtering in Qdrant. This ensures that one user cannot access another user's documents or chat context.
+
+TECHNICAL ARCHITECTURE:
+
+Frontend:
+Built using React.js and Tailwind CSS to provide a modern chat interface with file upload capability and session history sidebar.
+
+Backend:
+Developed using Node.js and Express.js. Handles file uploads, text extraction, embedding generation, vector storage, and chatbot response generation.
+
+Authentication:
+Firebase Authentication manages user login, signup, and session identity.
+
+AI and LLM Integration:
+Google Gemini model is used for generating responses. LangChain JS is used to manage retrieval workflows, embeddings, and prompt orchestration.
+
+Vector Database:
+Qdrant Cloud is used as the vector database to store embeddings and perform similarity search for semantic retrieval.
+
+Database:
+MongoDB stores chat history, user session data, and uploaded file metadata.
+
+Embedding Pipeline:
+Documents are parsed, cleaned, chunked, converted into embeddings, and stored in Qdrant with metadata including userId and sessionId for filtering.
+
+PROJECT STRUCTURE OVERVIEW:
+
+Frontend:
+Contains React UI components including chat interface, login screen, and file upload functionality. Firebase configuration and environment variables are secured.
+
+Backend:
+Contains Express routes and controllers handling chat logic, document upload, embedding generation, and Gemini API integration. Sensitive keys are secured using environment variables and ignored files.
+
+SECURITY AND ARCHITECTURE DESIGN:
+The system follows a secure production-ready architecture. Sensitive keys such as Firebase service credentials and API keys are stored in environment variables and excluded from the repository. Per-user and per-session filtering ensures secure document isolation. The repository is published as read-only with restricted usage rights.
+
+KEY LEARNINGS AND SKILLS DEMONSTRATED:
+
+Full-stack MERN development
+Integration of generative AI into web applications
+Retrieval Augmented Generation architecture
+Vector databases and semantic search
+Document chunking and embeddings
+Session-based memory handling
+Secure authentication and user isolation
+Production-level project structuring
+
+ROLE AND CONTRIBUTION:
+This project was fully designed and developed by Samir Gajjar. Responsibilities included system architecture design, frontend and backend development, vector database integration, embedding pipeline creation, and deployment-ready structuring.
+
+PROJECT SIGNIFICANCE:
+This project demonstrates strong capabilities in building real-world AI-powered applications. It highlights expertise in combining full-stack development with advanced AI concepts such as retrieval augmented generation, semantic search, and agentic workflows. It serves as a flagship portfolio project showcasing readiness for AI and full-stack engineering roles.
