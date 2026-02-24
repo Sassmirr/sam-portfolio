@@ -1,10 +1,10 @@
 import express from "express";
 import Contact from "../models/Contact.js";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 const router = express.Router();
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-// POST /api/contact
 router.post("/", async (req, res) => {
     try {
         const { name, email, subject, message } = req.body;
@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
             return res.status(400).json({ error: "All fields required" });
         }
 
-        // ===== SAVE TO MONGODB =====
+        // SAVE TO DB
         const newContact = new Contact({
             name,
             email,
@@ -24,40 +24,24 @@ router.post("/", async (req, res) => {
 
         await newContact.save();
 
-        // ===== SEND EMAIL TO YOU =====
-        const transporter = nodemailer.createTransport({
-            //service: "gmail",
-            host: "smtp.gmail.com",
-            port: 587,
-            secure: false, // important
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS,
-            },
-            tls: {
-                rejectUnauthorized: false,
-            },
-        });
-
-        const mailOptions = {
-            from: process.env.EMAIL_USER,
-            to: "sgajjar3216@gmail.com",
+        // SEND EMAIL (RESEND)
+        await resend.emails.send({
+            from: "Portfolio <onboarding@resend.dev>",
+            to: ["sgajjar3216@gmail.com"],
             subject: `🚀 New Portfolio Message: ${subject || "No subject"}`,
             html: `
-        <h2>New message from your portfolio</h2>
-        <p><b>Name:</b> ${name}</p>
-        <p><b>Email:</b> ${email}</p>
-        <p><b>Subject:</b> ${subject}</p>
-        <p><b>Message:</b></p>
-        <p>${message}</p>
-      `,
-        };
-
-        await transporter.sendMail(mailOptions);
+                <h2>New message from your portfolio</h2>
+                <p><b>Name:</b> ${name}</p>
+                <p><b>Email:</b> ${email}</p>
+                <p><b>Subject:</b> ${subject}</p>
+                <p><b>Message:</b></p>
+                <p>${message}</p>
+            `,
+        });
 
         res.status(200).json({
             success: true,
-            message: "Message sent & email delivered",
+            message: "Message sent & saved",
         });
 
     } catch (err) {

@@ -21,6 +21,7 @@
     "langchain": "^0.2.11",
     "mongoose": "^9.2.1",
     "nodemailer": "^8.0.1",
-    "qdrant-client": "^0.0.1"
+    "qdrant-client": "^0.0.1",
+    "resend": "^6.9.2"
   }
 }
