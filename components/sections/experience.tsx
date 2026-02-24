@@ -27,64 +27,86 @@ export function ExperienceSection() {
   ]
 
   return (
-    <section id="experience" className="py-20 px-6 bg-secondary">
-      <div className="max-w-4xl mx-auto space-y-16">
-        {/* Section title */}
+    <section id="experience" className="py-28 px-6 bg-background relative overflow-hidden">
+
+      {/* subtle background glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[radial-gradient(circle_at_center,rgba(124,58,237,0.18),transparent_70%)] blur-3xl pointer-events-none" />
+
+      <div className="max-w-5xl mx-auto space-y-20 relative z-10">
+
+        {/* Title */}
         <div className="text-center space-y-4">
-          <h2 className="text-5xl md:text-6xl font-bold">Experience</h2>
-          <div className="h-1 w-12 bg-accent mx-auto rounded-full" />
+          <h2 className="text-5xl md:text-6xl font-bold tracking-tight">
+            Experience
+          </h2>
+          <div className="h-[3px] w-16 mx-auto rounded-full bg-gradient-to-r from-[hsl(var(--luxury-purple-1))] via-[hsl(var(--luxury-purple-2))] to-[hsl(var(--luxury-purple-3))]" />
         </div>
 
         {/* Timeline */}
-        <div className="space-y-8">
-          {experiences.map((experience, index) => (
-            <div key={experience.company} className="relative">
-              {/* Timeline connector */}
-              {index !== experiences.length - 1 && (
-                <div className="absolute left-6 top-20 w-0.5 h-16 bg-border" aria-hidden="true" />
-              )}
+        <div className="relative">
 
-              {/* Timeline item */}
-              <div className="flex gap-8">
+          {/* vertical line */}
+          <div className="absolute left-6 md:left-1/2 md:-translate-x-1/2 top-0 h-full w-[2px] bg-gradient-to-b from-transparent via-border to-transparent" />
+
+          <div className="space-y-16">
+            {experiences.map((exp, index) => (
+              <div
+                key={exp.title}
+                className={`relative flex flex-col md:flex-row items-start md:items-center gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                  }`}
+              >
                 {/* Timeline dot */}
-                <div className="flex flex-col items-center">
-                  <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
-                    <div className="w-3 h-3 rounded-full bg-background" />
-                  </div>
+                <div className="absolute md:left-1/2 md:-translate-x-1/2 left-6">
+                  <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[hsl(var(--luxury-purple-1))] to-[hsl(var(--luxury-purple-3))] shadow-[0_0_20px_rgba(124,58,237,0.6)]" />
                 </div>
 
-                {/* Content */}
-                <div className="flex-1 pb-8">
-                  <div className="bg-background rounded-lg border border-border p-6 hover:border-accent/50 transition-colors">
-                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-2">
+                {/* Spacer */}
+                <div className="hidden md:block md:w-1/2" />
+
+                {/* Card */}
+                <div className="w-full md:w-1/2 ml-16 md:ml-0">
+                  <div className="glass-card p-7 rounded-2xl border border-border bg-secondary/40 backdrop-blur-xl hover:border-accent/40 transition-all duration-300">
+
+                    {/* header */}
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
                       <div>
-                        <h3 className="text-xl font-bold text-foreground">{experience.title}</h3>
-                        <p className="text-accent font-semibold">{experience.company}</p>
+                        <h3 className="text-xl font-bold text-foreground">
+                          {exp.title}
+                        </h3>
+                        <p className="text-sm font-semibold bg-gradient-to-r from-[hsl(var(--luxury-purple-1))] to-[hsl(var(--luxury-purple-3))] bg-clip-text text-transparent">
+                          {exp.company}
+                        </p>
                       </div>
-                      <span className="text-sm text-muted-foreground whitespace-nowrap md:text-right">
-                        {experience.duration}
+
+                      <span className="text-xs md:text-sm text-muted-foreground whitespace-nowrap">
+                        {exp.duration}
                       </span>
                     </div>
 
-                    <p className="text-muted-foreground leading-relaxed mb-4">{experience.description}</p>
+                    {/* description */}
+                    <p className="text-muted-foreground leading-relaxed mb-5">
+                      {exp.description}
+                    </p>
 
-                    {/* Highlights */}
+                    {/* tags */}
                     <div className="flex flex-wrap gap-2">
-                      {experience.highlights.map((highlight) => (
+                      {exp.highlights.map((tag) => (
                         <span
-                          key={highlight}
-                          className="px-3 py-1 rounded-full bg-secondary text-xs font-medium text-accent border border-accent/20"
+                          key={tag}
+                          className="px-3 py-1 text-xs rounded-full bg-background border border-border text-muted-foreground hover:border-accent/40 transition"
                         >
-                          {highlight}
+                          {tag}
                         </span>
                       ))}
                     </div>
+
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+
       </div>
     </section>
   )

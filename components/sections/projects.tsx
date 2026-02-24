@@ -3,7 +3,7 @@ import { ExternalLink, Github } from 'lucide-react'
 
 export function ProjectsSection() {
 
-  // 🔥 scroll to chat safely
+  // smooth scroll to AI chat demo
   const scrollToChat = (e: React.MouseEvent) => {
     e.preventDefault()
     const chatSection = document.getElementById('chat')
@@ -13,39 +13,36 @@ export function ProjectsSection() {
   }
 
   const projects = [
-    // 1️⃣ Voice Agent
     {
       title: 'Voice Salon Booking AI Agent',
       description:
-        'Voice-based conversational booking system with real-time responses and intelligent scheduling logic. Handles inquiries, bookings, rescheduling, and service recommendations naturally.',
-      impact: 'Automates salon bookings with natural AI-driven voice interaction',
-      tags: ['Voice AI', 'Generative AI', 'MERN', 'Real-time', 'Scheduling'],
+        'Conversational voice AI agent capable of handling bookings, rescheduling, and service queries in real time. Built to simulate a human receptionist using speech-to-text, text-to-speech, and generative reasoning.',
+      impact: 'Replaces manual booking calls with autonomous AI interaction',
+      tags: ['Voice AI', 'Generative AI', 'Real-time', 'MERN', 'Automation'],
       links: {
         demo: 'https://github.com/Sassmirr',
         github: 'https://github.com/Sassmirr',
       },
     },
 
-    // 2️⃣ Portfolio
     {
-      title: 'Personal AI Portfolio Website',
+      title: 'Personal AI Portfolio (This Website)',
       description:
-        'A premium AI-powered portfolio featuring an agentic RAG assistant, real-time streaming responses, backend contact system, and intelligent recruiter-aware behavior.',
-      impact: 'Transforms a traditional portfolio into an AI experience',
-      tags: ['Next.js', 'Node.js', 'Gemini', 'Qdrant', 'RAG', 'AI Agent'],
+        'A new-age AI portfolio featuring an embedded agentic assistant trained on my work, streaming responses, recruiter-aware intelligence, and backend contact pipeline.',
+      impact: 'Transforms a traditional portfolio into an interactive AI experience',
+      tags: ['Next.js', 'AI Agent', 'Gemini', 'Qdrant', 'RAG', 'Node'],
       links: {
         demo: '#',
         github: '#',
       },
     },
 
-    // 3️⃣ RAG chatbot (scroll demo)
     {
       title: 'Agentic RAG Chatbot',
       description:
-        'Production-ready AI assistant with document ingestion and semantic retrieval. Supports context-aware responses and multi-session intelligence.',
-      impact: 'Enables AI-powered document reasoning and intelligent search',
-      tags: ['React', 'Node.js', 'LangChain', 'Qdrant', 'Gemini'],
+        'Production-ready retrieval augmented generation system with document ingestion, semantic search, and context-aware reasoning. Supports multi-session memory and intelligent responses.',
+      impact: 'Enables intelligent document querying and AI reasoning',
+      tags: ['RAG', 'LangChain', 'Gemini', 'Qdrant', 'React', 'Node'],
       links: {
         demo: '#chat',
         github: 'https://github.com/Sassmirr/d-RAG.git',
@@ -53,52 +50,48 @@ export function ProjectsSection() {
       },
     },
 
-    // 4️⃣ Fitness
     {
       title: 'AI Fitness Trainer',
       description:
-        'AI-powered fitness coaching system using computer vision for posture analysis and adaptive workout recommendations.',
-      impact: 'Provides intelligent, personalized fitness guidance',
-      tags: ['Python', 'OpenCV', 'TensorFlow', 'React'],
+        'Computer vision powered fitness assistant that tracks posture and movement while generating adaptive training suggestions using AI models.',
+      impact: 'Brings real-time AI posture correction and fitness guidance',
+      tags: ['Computer Vision', 'Python', 'OpenCV', 'TensorFlow', 'AI'],
       links: {
         demo: 'https://github.com/Sassmirr',
         github: 'https://github.com/Sassmirr',
       },
     },
 
-    // 5️⃣ Steganography
     {
-      title: 'Steganography System',
+      title: 'Steganography Encryption System',
       description:
-        'Secure data hiding system with encryption support, enabling confidential information embedding within images.',
-      impact: 'Enhances secure communication through image-based encryption',
-      tags: ['Python', 'Cryptography', 'Image Processing'],
+        'Advanced secure data hiding system allowing encrypted information embedding within images for confidential communication.',
+      impact: 'Enhances data security through visual cryptography',
+      tags: ['Python', 'Cryptography', 'Security', 'Image Processing'],
       links: {
         demo: 'https://github.com/Sassmirr',
         github: 'https://github.com/Sassmirr',
       },
     },
 
-    // 6️⃣ ANPR
     {
-      title: 'ANPR + Face Recognition System',
+      title: 'ANPR + Face Recognition',
       description:
-        'Automated number plate recognition integrated with facial identification for intelligent security monitoring.',
-      impact: 'Real-time surveillance and identity verification system',
-      tags: ['Computer Vision', 'YOLO', 'Python', 'OpenCV'],
+        'Computer vision surveillance system combining automatic number plate recognition and facial identification for real-time monitoring.',
+      impact: 'Real-time identity and vehicle tracking system',
+      tags: ['YOLO', 'OpenCV', 'Python', 'Computer Vision'],
       links: {
         demo: 'https://github.com/Sassmirr',
         github: 'https://github.com/Sassmirr',
       },
     },
 
-    // 7️⃣ Bus booking
     {
-      title: 'Bus Booking Webflow + Backend',
+      title: 'Bus Booking Platform (Webflow + Backend)',
       description:
-        'Full-stack bus booking platform with Webflow frontend and custom Node.js backend handling reservations and scheduling logic.',
-      impact: 'Complete booking infrastructure with scalable backend architecture',
-      tags: ['Node.js', 'MongoDB', 'Webflow', 'REST APIs'],
+        'Full-stack bus reservation platform with Webflow frontend and Node.js backend handling booking logic, scheduling, and APIs.',
+      impact: 'Complete booking infrastructure with scalable backend',
+      tags: ['Node.js', 'MongoDB', 'Webflow', 'REST API'],
       links: {
         demo: 'https://bus-it-up.my.canva.site',
         github: 'https://github.com/Sassmirr/bus-booking-backend.git',
@@ -107,78 +100,98 @@ export function ProjectsSection() {
   ]
 
   return (
-    <section id="projects" className="py-20 px-6 bg-secondary">
-      <div className="max-w-6xl mx-auto space-y-16">
+    <section id="projects" className="py-28 px-6 bg-background">
+      <div className="max-w-6xl mx-auto space-y-20">
 
+        {/* Title */}
         <div className="text-center space-y-4">
-          <h2 className="text-5xl md:text-6xl font-bold">Projects</h2>
-          <div className="h-1 w-12 bg-accent mx-auto rounded-full" />
+          <h2 className="text-5xl md:text-6xl font-bold tracking-tight">
+            Projects & Systems
+          </h2>
+
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            A selection of AI systems and full-stack products I’ve built and deployed.
+          </p>
+
+          <div
+            className="h-[2px] w-20 mx-auto rounded-full"
+            style={{
+              background: `linear-gradient(90deg,
+              transparent,
+              hsl(var(--luxury-purple-2)),
+              transparent)`
+            }}
+          />
         </div>
 
+        {/* Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project) => (
             <article
               key={project.title}
-              className="group p-8 rounded-lg bg-background border border-border hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 space-y-4 flex flex-col"
+              className="glass-card group p-8 rounded-2xl border border-border/60 transition-all duration-300 hover:scale-[1.02] hover:border-purple-500/40 flex flex-col"
             >
-              <h3 className="text-2xl font-bold text-foreground group-hover:text-accent transition-colors">
+              {/* title */}
+              <h3 className="text-2xl font-semibold mb-3">
                 {project.title}
               </h3>
 
-              <p className="text-muted-foreground leading-relaxed">
+              {/* desc */}
+              <p className="text-muted-foreground leading-relaxed mb-4">
                 {project.description}
               </p>
 
+              {/* impact */}
               {project.impact && (
-                <p className="text-sm text-accent font-medium">
-                  ✨ {project.impact}
+                <p className="text-sm mb-5 font-medium"
+                  style={{
+                    color: 'hsl(var(--luxury-purple-2))'
+                  }}>
+                  {project.impact}
                 </p>
               )}
 
-              <div className="flex flex-wrap gap-2 pt-2">
+              {/* tags */}
+              <div className="flex flex-wrap gap-2 mb-6">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 rounded-full bg-secondary text-xs font-medium text-accent border border-accent/20"
+                    className="px-3 py-1 rounded-full text-xs font-medium border border-border text-muted-foreground"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
 
-              <div className="flex gap-4 pt-6 border-t border-border mt-auto">
+              {/* buttons */}
+              <div className="flex gap-6 pt-4 border-t border-border mt-auto">
 
-                {/* Live demo */}
                 {project.links.isChatDemo ? (
                   <a
                     href="#chat"
                     onClick={scrollToChat}
-                    className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-accent transition-colors"
+                    className="text-sm font-medium hover:opacity-80 transition flex items-center gap-2"
                   >
-                    Live Demo
-                    <ExternalLink size={16} />
+                    Live Demo <ExternalLink size={15} />
                   </a>
                 ) : (
                   <a
                     href={project.links.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-accent transition-colors"
+                    className="text-sm font-medium hover:opacity-80 transition flex items-center gap-2"
                   >
-                    Live Demo
-                    <ExternalLink size={16} />
+                    Live Demo <ExternalLink size={15} />
                   </a>
                 )}
 
-                {/* GitHub */}
                 <a
                   href={project.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-accent transition-colors"
+                  className="text-sm font-medium hover:opacity-80 transition flex items-center gap-2"
                 >
-                  GitHub
-                  <Github size={16} />
+                  GitHub <Github size={15} />
                 </a>
 
               </div>

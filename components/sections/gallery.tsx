@@ -2,73 +2,86 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 
 export function GallerySection() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
 
-  // 🔥 Replace these filenames with your real images inside /public/images
   const photos = [
     {
       src: '/images/IMG_5344.jpg',
       alt: 'Professional portrait',
-      title: 'Professional Shoot',
+      title: 'Professional',
     },
     {
       src: '/images/aesthetic.jpeg',
-      alt: 'Office look',
+      alt: 'Travel look',
       title: 'Travel',
     },
     {
       src: '/images/headshot.jpeg',
-      alt: 'Confident tech look',
+      alt: 'Headshot',
       title: 'Headshot',
     },
     {
       src: '/images/gym.jpeg',
-      alt: 'Clean headshot',
+      alt: 'Fitness',
       title: 'Fitness',
     },
   ]
 
-  return (
-    <section className="py-24 px-6 bg-background">
-      <div className="max-w-6xl mx-auto space-y-16">
+  const prevImage = () => {
+    if (selectedImage === null) return
+    setSelectedImage(selectedImage === 0 ? photos.length - 1 : selectedImage - 1)
+  }
 
-        {/* Title */}
-        <div className="text-center space-y-4">
+  const nextImage = () => {
+    if (selectedImage === null) return
+    setSelectedImage(selectedImage === photos.length - 1 ? 0 : selectedImage + 1)
+  }
+
+  return (
+    <section id="gallery" className="py-24 px-6 bg-background">
+      <div className="max-w-6xl mx-auto space-y-20">
+
+        {/* 🔥 Section Header */}
+        <div className="text-center space-y-6">
           <h2 className="text-5xl md:text-6xl font-bold tracking-tight">
             Beyond Engineering
           </h2>
 
-          <p className="text-lg text-muted-foreground">
-            A glimpse beyond the code
+          <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+            A glimpse beyond code — personality, discipline, and lifestyle.
           </p>
 
-          <div className="h-[2px] w-16 bg-white/20 mx-auto rounded-full" />
+          <div className="w-20 h-[2px] mx-auto rounded-full bg-gradient-to-r from-transparent via-[hsl(var(--luxury-purple-2))] to-transparent" />
         </div>
 
-        {/* Gallery */}
-        <div className="grid md:grid-cols-2 gap-8">
+        {/* 🔥 Gallery Grid */}
+        <div className="grid md:grid-cols-2 gap-10">
           {photos.map((photo, index) => (
             <div
               key={index}
-              className="group relative h-80 md:h-[420px] rounded-2xl overflow-hidden border border-white/10 cursor-pointer"
               onClick={() => setSelectedImage(index)}
+              className="group relative h-80 md:h-[440px] rounded-3xl overflow-hidden cursor-pointer glass-card border border-white/10"
             >
               {/* Image */}
               <Image
                 src={photo.src}
                 alt={photo.alt}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-cover transition-all duration-700 group-hover:scale-110"
               />
 
-              {/* Dark overlay */}
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300" />
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-70 group-hover:opacity-90 transition" />
 
-              {/* Title bottom */}
+              {/* Gloss hover glow */}
+              {/* <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-[radial-gradient(circle_at_center,rgba(124,58,237,0.25),transparent_60%)]" /> */}
+
+              {/* Title */}
               <div className="absolute bottom-0 left-0 right-0 p-6">
-                <p className="text-white text-sm tracking-wide opacity-80">
+                <p className="text-white text-sm tracking-widest uppercase opacity-90">
                   {photo.title}
                 </p>
               </div>
@@ -76,14 +89,14 @@ export function GallerySection() {
           ))}
         </div>
 
-        {/* Modal viewer */}
+        {/* 🔥 MODAL */}
         {selectedImage !== null && (
           <div
-            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-6"
+            className="fixed inset-0 bg-black/95 backdrop-blur-xl z-50 flex items-center justify-center p-6 fade-in"
             onClick={() => setSelectedImage(null)}
           >
             <div
-              className="relative max-w-5xl w-full h-[70vh] rounded-xl overflow-hidden"
+              className="relative w-full max-w-6xl h-[75vh] rounded-2xl overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               <Image
@@ -96,34 +109,32 @@ export function GallerySection() {
               {/* Close */}
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 bg-black/60 hover:bg-black/80 text-white p-3 rounded-full"
+                className="absolute top-6 right-6 neon-btn p-3 rounded-full"
               >
-                ✕
+                <X size={18} />
               </button>
 
-              {/* Navigation */}
-              <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-6">
-                <button
-                  onClick={() =>
-                    setSelectedImage(
-                      selectedImage === 0 ? photos.length - 1 : selectedImage - 1
-                    )
-                  }
-                  className="bg-black/60 hover:bg-black/80 text-white px-4 py-2 rounded-lg"
-                >
-                  Prev
-                </button>
+              {/* Prev */}
+              <button
+                onClick={prevImage}
+                className="absolute left-6 top-1/2 -translate-y-1/2 neon-btn p-3 rounded-full"
+              >
+                <ChevronLeft size={22} />
+              </button>
 
-                <button
-                  onClick={() =>
-                    setSelectedImage(
-                      selectedImage === photos.length - 1 ? 0 : selectedImage + 1
-                    )
-                  }
-                  className="bg-black/60 hover:bg-black/80 text-white px-4 py-2 rounded-lg"
-                >
-                  Next
-                </button>
+              {/* Next */}
+              <button
+                onClick={nextImage}
+                className="absolute right-6 top-1/2 -translate-y-1/2 neon-btn p-3 rounded-full"
+              >
+                <ChevronRight size={22} />
+              </button>
+
+              {/* Caption */}
+              <div className="absolute bottom-6 left-0 right-0 text-center">
+                <p className="text-white/80 text-sm tracking-widest uppercase">
+                  {photos[selectedImage].title}
+                </p>
               </div>
             </div>
           </div>

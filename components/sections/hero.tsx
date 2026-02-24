@@ -5,21 +5,45 @@ import { useState } from 'react'
 
 export function HeroSection() {
   const [profileImageError, setProfileImageError] = useState(false)
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <section className="min-h-screen flex items-center justify-center px-6 pt-20 bg-background">
       <div className="max-w-4xl mx-auto text-center space-y-8 fade-in">
-        {/* Profile image - circular premium styling */}
+
+        {/* Profile Image */}
         <div className="flex justify-center mb-4">
           <div className="relative w-40 h-40 md:w-48 md:h-48">
-            {/* Outer glow layer */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-accent/20 to-transparent opacity-60 blur-xl" />
 
-            {/* Premium border with subtle gradient effect */}
-            <div className="absolute inset-0 rounded-full border border-accent/30 shadow-lg" style={{
-              boxShadow: '0 0 40px rgba(218, 165, 32, 0.15), inset 0 0 30px rgba(255, 255, 255, 0.05)'
-            }} />
+            {/* Purple Luxury Glow */}
+            <div
+              className="absolute inset-0 rounded-full blur-2xl opacity-60"
+              style={{
+                background: `radial-gradient(circle,
+                  hsla(var(--luxury-purple-1),0.35) 0%,
+                  transparent 70%)`
+              }}
+            />
 
-            {/* Image container */}
+            {/* Premium Glass Ring */}
+            <div
+              className="absolute inset-0 rounded-full border"
+              style={{
+                borderColor: 'rgba(124,58,237,0.35)',
+                boxShadow: `
+                  0 0 60px rgba(124,58,237,0.25),
+                  inset 0 0 40px rgba(255,255,255,0.05)
+                `
+              }}
+            />
+
+            {/* Image Container */}
             <div className="absolute inset-0 rounded-full overflow-hidden bg-secondary">
               {!profileImageError ? (
                 <img
@@ -43,11 +67,21 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Main heading */}
+        {/* Name & Title */}
         <div className="space-y-4">
-          <h1 className="text-7xl md:text-8xl font-bold text-balance leading-tight tracking-tighter">
-            Samir Gajjar
+          <h1 className="text-7xl md:text-8xl font-bold leading-tight tracking-tighter">
+            <span
+              className="bg-clip-text text-transparent"
+              style={{
+                backgroundImage: `linear-gradient(135deg,
+                  hsl(var(--foreground)) 0%,
+                  hsl(var(--luxury-purple-2)) 120%)`
+              }}
+            >
+              Samir Gajjar
+            </span>
           </h1>
+
           <h2 className="text-2xl md:text-3xl font-light text-muted-foreground tracking-wide">
             Full Stack Generative AI Engineer
           </h2>
@@ -55,40 +89,54 @@ export function HeroSection() {
 
         {/* Subtitle */}
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-          Building production-ready AI systems and intelligent full-stack applications. Specializing in generative AI, RAG pipelines, and real-world AI deployment.
+          Building production-ready AI systems and intelligent full-stack applications.
+          Specializing in generative AI, RAG pipelines, and real-world AI deployment.
         </p>
 
-        {/* Availability Badge */}
+        {/* Founder Badge */}
         <div className="flex justify-center">
-          <div className="px-4 py-2 rounded-full border border-accent/30 bg-accent/5 text-sm font-medium text-muted-foreground">
+          <div
+            className="px-5 py-2 rounded-full text-sm font-medium text-muted-foreground"
+            style={{
+              border: '1px solid rgba(124,58,237,0.35)',
+              background: 'rgba(124,58,237,0.08)',
+              backdropFilter: 'blur(10px)'
+            }}
+          >
             Final Year IT Engineer • Generative AI Intern • Open to AI Roles & Freelance
           </div>
         </div>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-          <button className="group px-8 py-3 bg-accent text-accent-foreground font-semibold rounded-sm hover:opacity-90 transition-opacity flex items-center gap-2">
+
+          {/* Primary */}
+          <button onClick={() => scrollToSection('chat')} className="neon-btn group flex items-center gap-2">
             Talk to My AI
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </button>
-          <button className="px-8 py-3 bg-secondary text-foreground font-semibold rounded-sm hover:bg-muted transition-colors">
+
+          {/* Secondary Glass */}
+          <button onClick={() => scrollToSection('projects')} className="glass-card px-8 py-3 font-semibold rounded-xl transition-all hover:scale-[1.03]">
             View Projects
           </button>
-          <button className="px-8 py-3 border border-border text-foreground font-semibold rounded-sm hover:bg-secondary transition-colors">
+
+          <button onClick={() => scrollToSection('contact')} className="glass-card px-8 py-3 font-semibold rounded-xl transition-all hover:scale-[1.03]">
             Hire Me
           </button>
         </div>
 
-        {/* Tech Strip */}
-        <div className="pt-8 space-y-4">
+        {/* Tech Stack */}
+        <div className="pt-10 space-y-4">
           <p className="text-xs text-muted-foreground uppercase tracking-widest font-semibold">
             Technologies
           </p>
+
           <div className="flex flex-wrap justify-center gap-3">
             {['Gemini', 'LangChain', 'Qdrant', 'MERN', 'Python', 'React'].map((tech) => (
               <span
                 key={tech}
-                className="px-4 py-2 rounded-full bg-secondary border border-border text-sm font-medium text-muted-foreground hover:border-accent/50 transition-colors"
+                className="px-4 py-2 rounded-full text-sm font-medium text-muted-foreground border border-border hover:shadow-[0_0_20px_rgba(124,58,237,0.25)] hover:border-purple-500/40 transition-all"
               >
                 {tech}
               </span>
@@ -96,8 +144,8 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="pt-12 flex justify-center">
+        {/* Scroll Indicator */}
+        <div className="pt-14 flex justify-center">
           <div className="animate-bounce">
             <svg
               className="w-6 h-6 text-muted-foreground"
@@ -114,6 +162,7 @@ export function HeroSection() {
             </svg>
           </div>
         </div>
+
       </div>
     </section>
   )

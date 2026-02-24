@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Mail, Linkedin, Github } from 'lucide-react'
+import { Mail, Linkedin, Github, Instagram } from 'lucide-react'
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -17,7 +17,7 @@ export function ContactSection() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
-    setFormData((prev) => ({
+    setFormData(prev => ({
       ...prev,
       [name]: value,
     }))
@@ -32,14 +32,11 @@ export function ContactSection() {
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contact`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       })
 
       const data = await res.json()
-
       if (!res.ok) throw new Error(data.error || 'Failed to send')
 
       setSuccess(true)
@@ -57,126 +54,163 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-20 px-6 bg-secondary">
-      <div className="max-w-4xl mx-auto space-y-16">
-        {/* Title */}
-        <div className="text-center space-y-4">
-          <h2 className="text-5xl md:text-6xl font-bold">Get In Touch</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Open to AI engineering roles, internships, freelance AI projects, and collaborations. Let's build something meaningful together.
+    <section id="contact" className="py-28 px-6 bg-secondary">
+      <div className="max-w-5xl mx-auto space-y-20">
+
+        {/* 🔥 HEADER */}
+        <div className="text-center space-y-6">
+          <h2 className="text-5xl md:text-6xl font-bold tracking-tight">
+            Let’s Build Something Serious
+          </h2>
+
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Open to AI engineering roles, freelance AI systems, and ambitious collaborations.
+            <br />
+            If you're building something meaningful — I'm in.
           </p>
-          <div className="h-1 w-12 bg-accent mx-auto rounded-full" />
+
+          <div className="w-20 h-[2px] mx-auto rounded-full bg-gradient-to-r from-transparent via-[hsl(var(--luxury-purple-2))] to-transparent" />
         </div>
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        {/* 🔥 CONTACT CARDS */}
+        <div className="grid md:grid-cols-4 gap-6">
+
+          {/* EMAIL */}
           <a
             href="mailto:sgajjar3216@gmail.com"
-            className="p-6 rounded-lg bg-background border border-border hover:border-accent/50 transition-all group text-center"
+            className="glass-card group p-6 rounded-2xl border border-white/10 hover:border-[hsl(var(--luxury-purple-2))]/60 transition-all text-center"
           >
-            <div className="w-12 h-12 rounded-lg bg-accent text-accent-foreground flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-              <Mail size={24} />
-            </div>
-            <h3 className="font-semibold mb-2 group-hover:text-accent transition-colors">Email</h3>
-            <p className="text-sm text-muted-foreground">sgajjar3216@gmail.com</p>
+            <Mail
+              size={28}
+              className="mx-auto mb-4 text-muted-foreground group-hover:text-[hsl(var(--luxury-purple-2))] transition-colors duration-300"
+            />
+            <h3 className="font-semibold mb-1">Email</h3>
+            <p className="text-xs text-muted-foreground">
+              sgajjar3216@gmail.com
+            </p>
           </a>
 
+          {/* LINKEDIN */}
           <a
             href="https://www.linkedin.com/in/samir-gajjar-bb8625290"
             target="_blank"
-            rel="noopener noreferrer"
-            className="p-6 rounded-lg bg-background border border-border hover:border-accent/50 transition-all group text-center"
+            className="glass-card group p-6 rounded-2xl border border-white/10 hover:border-[#0A66C2]/70 transition-all text-center"
           >
-            <div className="w-12 h-12 rounded-lg bg-accent text-accent-foreground flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-              <Linkedin size={24} />
-            </div>
-            <h3 className="font-semibold mb-2 group-hover:text-accent transition-colors">LinkedIn</h3>
-            <p className="text-sm text-muted-foreground">Connect with me</p>
+            <Linkedin
+              size={28}
+              className="mx-auto mb-4 text-muted-foreground group-hover:text-[#0A66C2] transition-colors duration-300"
+            />
+            <h3 className="font-semibold mb-1 group-hover:text-[#0A66C2] transition-colors">
+              LinkedIn
+            </h3>
+            <p className="text-xs text-muted-foreground">
+              Professional network
+            </p>
           </a>
 
+          {/* GITHUB */}
           <a
             href="https://github.com/Sassmirr"
             target="_blank"
-            rel="noopener noreferrer"
-            className="p-6 rounded-lg bg-background border border-border hover:border-accent/50 transition-all group text-center"
+            className="glass-card group p-6 rounded-2xl border border-white/10 hover:border-white/40 transition-all text-center"
           >
-            <div className="w-12 h-12 rounded-lg bg-accent text-accent-foreground flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-              <Github size={24} />
-            </div>
-            <h3 className="font-semibold mb-2 group-hover:text-accent transition-colors">GitHub</h3>
-            <p className="text-sm text-muted-foreground">Check my repositories</p>
+            <Github
+              size={28}
+              className="mx-auto mb-4 text-muted-foreground group-hover:text-white transition-colors duration-300"
+            />
+            <h3 className="font-semibold mb-1 group-hover:text-white transition-colors">
+              GitHub
+            </h3>
+            <p className="text-xs text-muted-foreground">
+              Code & projects
+            </p>
           </a>
-        </div>
 
-        {/* FORM */}
-        <div className="max-w-2xl mx-auto">
+          {/* INSTAGRAM */}
+          <a
+            href="https://www.instagram.com/sassmirr"
+            target="_blank"
+            className="glass-card group p-6 rounded-2xl border border-white/10 hover:border-pink-500/60 transition-all text-center"
+          >
+            <Instagram
+              size={28}
+              className="mx-auto mb-4 text-muted-foreground group-hover:text-pink-500 transition-colors duration-300"
+            />
+            <h3 className="font-semibold mb-1 group-hover:text-pink-500 transition-colors">
+              Instagram
+            </h3>
+            <p className="text-xs text-muted-foreground">
+              Lifestyle & personality
+            </p>
+          </a>
+
+        </div>
+        {/* 🔥 FORM */}
+        <div className="max-w-3xl mx-auto glass-card p-8 rounded-3xl border border-white/10">
           <form onSubmit={handleSubmit} className="space-y-6">
+
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-semibold mb-2">Name</label>
+                <label className="text-sm font-medium mb-2 block">Name</label>
                 <input
-                  type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 rounded-lg bg-background border border-border focus:ring-2 focus:ring-accent/50"
+                  className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:outline-none focus:ring-2 focus:ring-[hsl(var(--luxury-purple-2))]/50"
                   placeholder="Your name"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-2">Email</label>
+                <label className="text-sm font-medium mb-2 block">Email</label>
                 <input
-                  type="email"
                   name="email"
+                  type="email"
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 rounded-lg bg-background border border-border focus:ring-2 focus:ring-accent/50"
+                  className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:outline-none focus:ring-2 focus:ring-[hsl(var(--luxury-purple-2))]/50"
                   placeholder="your@email.com"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-semibold mb-2">Subject</label>
+              <label className="text-sm font-medium mb-2 block">Subject</label>
               <input
-                type="text"
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 rounded-lg bg-background border border-border focus:ring-2 focus:ring-accent/50"
-                placeholder="What's this about?"
+                className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:outline-none focus:ring-2 focus:ring-[hsl(var(--luxury-purple-2))]/50"
+                placeholder="Project / hiring / collaboration"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-semibold mb-2">Message</label>
+              <label className="text-sm font-medium mb-2 block">Message</label>
               <textarea
                 name="message"
+                rows={5}
                 value={formData.message}
                 onChange={handleChange}
                 required
-                rows={5}
-                className="w-full px-4 py-2 rounded-lg bg-background border border-border focus:ring-2 focus:ring-accent/50 resize-none"
-                placeholder="Your message..."
+                className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:outline-none focus:ring-2 focus:ring-[hsl(var(--luxury-purple-2))]/50 resize-none"
+                placeholder="Tell me what you're building or looking for..."
               />
             </div>
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full px-6 py-3 rounded-lg bg-accent text-accent-foreground font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
-            >
-              {loading ? 'Sending...' : 'Send Message'}
-            </button>
+            <div className="text-center pt-4">
+              <button type="submit" disabled={loading} className="neon-btn px-8 py-3">
+                {loading ? 'Sending...' : 'Send Message'}
+              </button>
+            </div>
           </form>
 
           {/* success */}
           {success && (
-            <div className="mt-6 p-4 rounded-lg bg-green-500/10 border border-green-500/30 text-center">
+            <div className="mt-6 text-center p-4 rounded-xl bg-green-500/10 border border-green-500/30">
               <p className="text-green-400 font-medium">
                 Message received. Samir will respond within 24 hours.
               </p>
@@ -185,11 +219,19 @@ export function ContactSection() {
 
           {/* error */}
           {error && (
-            <div className="mt-6 p-4 rounded-lg bg-red-500/10 border border-red-500/30 text-center">
+            <div className="mt-6 text-center p-4 rounded-xl bg-red-500/10 border border-red-500/30">
               <p className="text-red-400">{error}</p>
             </div>
           )}
         </div>
+
+        {/* 🔥 Footer vibe */}
+        <div className="text-center pt-10">
+          <p className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()} Samir Gajjar — Built with obsession.
+          </p>
+        </div>
+
       </div>
     </section>
   )
