@@ -20,6 +20,14 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/contact", contactRoutes);
 
+// ===== HEALTH CHECK (for uptime pinger) =====
+app.get("/", (req, res) => {
+    res.send("AI backend running");
+});
+
+app.get("/health", (req, res) => {
+    res.status(200).send("OK");
+});
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
